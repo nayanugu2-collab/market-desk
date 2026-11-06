@@ -4,55 +4,63 @@
     "name": "삼성전자",
     "type": "국내주식",
     "currency": "KRW",
-    "unit": "share"
+    "unit": "share",
+    "tvSymbol": "KRX:005930"
   },
   {
     "symbol": "AAPL",
     "name": "Apple",
     "type": "미국주식",
     "currency": "USD",
-    "unit": "share"
+    "unit": "share",
+    "tvSymbol": "NASDAQ:AAPL"
   },
   {
     "symbol": "069500.KS",
     "name": "KODEX 200",
     "type": "국내ETF",
     "currency": "KRW",
-    "unit": "share"
+    "unit": "share",
+    "tvSymbol": "KRX:069500"
   },
   {
     "symbol": "SPY",
     "name": "SPDR S&P 500 ETF",
     "type": "미국ETF",
     "currency": "USD",
-    "unit": "share"
+    "unit": "share",
+    "tvSymbol": "AMEX:SPY"
   },
   {
     "symbol": "QQQ",
     "name": "Invesco QQQ",
     "type": "미국ETF",
     "currency": "USD",
-    "unit": "share"
+    "unit": "share",
+    "tvSymbol": "NASDAQ:QQQ"
   },
   {
     "symbol": "GC=F",
     "name": "금 선물",
     "type": "금·원유",
     "currency": "USD",
-    "unit": "troy ounce"
+    "unit": "troy ounce",
+    "tvSymbol": "COMEX:GC1!"
   },
   {
     "symbol": "CL=F",
     "name": "WTI 원유 선물",
     "type": "금·원유",
     "currency": "USD",
-    "unit": "barrel"
+    "unit": "barrel",
+    "tvSymbol": "NYMEX:CL1!"
   },
   {
     "symbol": "BZ=F",
     "name": "Brent 원유 선물",
     "type": "금·원유",
     "currency": "USD",
-    "unit": "barrel"
+    "unit": "barrel",
+    "tvSymbol": "ICEEUR:BRN1!"
   }
 ]

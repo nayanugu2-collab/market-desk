@@ -1,10 +1,8 @@
-name: Collect quotes and deploy Pages
+name: Deploy official widget dashboard
 on:
-  schedule:
-    - cron: '17,47 * * * *'
-  workflow_dispatch:
   push:
     branches: ['setup-market-desk']
+  workflow_dispatch:
 permissions:
   contents: read
 concurrency:
@@ -12,36 +10,18 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
-    if: github.event_name != 'schedule' || vars.MARKET_PUBLICATION_APPROVED == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-node@v4
         with:
-          python-version: '3.12'
-          cache: pip
-      - run: pip install -r requirements.txt
-      - run: python -m unittest discover -s tests -v
-      - run: python scripts/collect.py
-        if: vars.MARKET_PUBLICATION_APPROVED == 'true'
-      - name: Preserve the last successful snapshot
-        if: vars.MARKET_PUBLICATION_APPROVED == 'true'
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/market.json
-          if ! git diff --cached --quiet; then
-            git commit -m "Update market snapshot" -m "Co-authored-by: openhands <openhands@all-hands.dev>"
-            git push
-          fi
+          node-version: '22'
+      - run: node --check app.js
       - name: Stage public files only
         run: |
           mkdir -p public/data
           cp index.html styles.css app.js public/
-          cp data/market.json public/data/
+          cp data/catalog.json public/data/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
