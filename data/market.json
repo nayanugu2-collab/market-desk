@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "demo": true,
+  "collected_at": null,
+  "assets": [
+    {
+      "symbol": "005930.KS",
+      "name": "삼성전자",
+      "type": "국내주식",
+      "currency": "KRW",
+      "unit": "share",
+      "price": 70000,
+      "quote_at": null,
+      "fetched_at": null,
+      "status": "demo"
+    },
+    {
+      "symbol": "AAPL",
+      "name": "Apple",
+      "type": "미국주식",
+      "currency": "USD",
+      "unit": "share",
+      "price": 200,
+      "quote_at": null,
+      "fetched_at": null,
+      "status": "demo"
+    },
+    {
+      "symbol": "069500.KS",
+      "name": "KODEX 200",
+      "type": "국내ETF",
+      "currency": "KRW",
+      "unit": "share",
+      "price": 35000,
+      "quote_at": null,
+      "fetched_at": null,
+      "status": "demo"
+    },
+    {
+      "symbol": "SPY",
+      "name": "SPDR S&P 500 ETF",
+      "type": "미국ETF",
+      "currency": "USD",
+      "unit": "share",
+      "price": 500,
+      "quote_at": null,
+      "fetched_at": null,
+      "status": "demo"
+    },
+    {
+      "symbol": "QQQ",
+      "name": "Invesco QQQ",
+      "type": "미국ETF",
+      "currency": "USD",
+      "unit": "share",
+      "price": 450,
+      "quote_at": null,
+      "fetched_at": null,
+      "status": "demo"
+    },
+    {
+      "symbol": "GC=F",
+      "name": "금 선물",
+      "type": "금·원유",
+      "currency": "USD",
+      "unit": "troy ounce",
+      "price": 2400,
+      "quote_at": null,
+      "fetched_at": null,
+      "status": "demo"
+    },
+    {
+      "symbol": "CL=F",
+      "name": "WTI 원유 선물",
+      "type": "금·원유",
+      "currency": "USD",
+      "unit": "barrel",
+      "price": 75,
+      "quote_at": null,
+      "fetched_at": null,
+      "status": "demo"
+    },
+    {
+      "symbol": "BZ=F",
+      "name": "Brent 원유 선물",
+      "type": "금·원유",
+      "currency": "USD",
+      "unit": "barrel",
+      "price": 80,
+      "quote_at": null,
+      "fetched_at": null,
+      "status": "demo"
+    }
+  ]
+}

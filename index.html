@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Market Desk · 나의 투자 관찰실</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="./"><span class="logo">M</span> MARKET DESK <small>PERSONAL WATCHLIST</small></a><span class="pill">● 관찰 모드</span></header>
+  <main>
+    <div class="heading"><div><p class="eyebrow">YOUR MARKETS, AT A GLANCE</p><h1>시장을 한눈에.<br class="mobile"> 판단은 나답게.</h1><p class="muted">주식부터 원자재까지, 나의 관심 자산을 한곳에서.</p></div><button id="refresh">↻ 데이터 다시 읽기</button></div>
+    <div id="notice" class="notice" role="status">데이터를 읽는 중입니다.</div>
+    <section class="stats" aria-label="시장 요약"><div><span>관심 자산</span><strong id="count">—</strong></div><div><span>미국 시장</span><strong id="us-count">—</strong></div><div><span>국내 시장</span><strong id="kr-count">—</strong></div><div><span>마지막 수집 · 한국 시간</span><strong id="collected" class="timestamp">—</strong></div></section>
+    <nav id="tabs" aria-label="자산 분류"></nav>
+    <div class="toolbar"><input id="search" type="search" placeholder="자산명 또는 코드 검색" aria-label="자산 검색"><label class="check"><input id="favorites" type="checkbox"> 관심만 보기</label><select id="sort" aria-label="정렬"><option value="default">기본 순서</option><option value="name">이름순</option><option value="price">가격 높은순 · 통화별 비교 주의</option></select><div class="tools"><button id="export">백업</button><button id="import">복원</button><input id="file" type="file" accept="application/json" hidden></div></div>
+    <div class="workspace"><section class="list"><div class="section-title"><h2>관심 시장</h2><span id="visible-count" class="muted"></span></div><div class="table-wrap"><table><thead><tr><th>관심</th><th>자산 / 코드</th><th>가격</th><th>유형</th><th>시세 기준 · KST</th><th>출처</th></tr></thead><tbody id="rows"></tbody></table></div><p class="footnote">가격은 지연될 수 있습니다. 종목을 선택하면 상세 정보를 확인할 수 있습니다.</p></section>
+    <aside id="detail" aria-label="자산 상세"><div class="empty-detail"><span>↗</span><h2>자산을 선택하세요</h2><p>가격 정보와 나만의 투자 메모를<br>여기에서 확인할 수 있습니다.</p></div></aside></div>
+    <footer><span>MARKET DESK / 개인 투자 관찰 도구</span><span>투자 권유가 아닙니다. 개인 메모는 이 브라우저에만 저장됩니다.</span></footer>
+  </main>
+  <dialog id="message"><p id="message-text"></p><button id="message-close">확인</button></dialog>
+</body>
+</html>
