@@ -11,6 +11,18 @@ const prefs = symbol => settings.items[symbol] || {};
 const price = a => prefs(a.symbol).mode === 'manual' ? prefs(a.symbol).manualPrice : null;
 const source = a => prefs(a.symbol).mode === 'manual' ? '수동 입력' : 'TradingView';
 function message(text) { $('message-text').textContent = text; $('message').showModal(); }
+function mountQuotes(assets) {
+  const host = $('market-quotes');
+  host.querySelector('script')?.remove();
+  const inner = host.querySelector('.tradingview-widget-container__widget');
+  inner.replaceChildren();
+  const script = document.createElement('script');
+  script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js';
+  script.async = true;
+  script.textContent = JSON.stringify({ width: '100%', height: 460, locale: 'kr', colorTheme: 'dark', isTransparent: true, showSymbolLogo: true, symbolsGroups: [{ name: '관심 자산', symbols: assets.map(a => ({ name: a.tvSymbol, displayName: a.name })) }] });
+  script.onerror = () => { inner.textContent = '시세 목록을 불러오지 못했습니다. TradingView 링크 또는 아래 상세 패널을 이용하세요.'; };
+  host.append(script);
+}
 function mountWidget(asset) {
   const host = $('tv-widget');
   host.className = 'tradingview-widget-container';
@@ -91,8 +103,9 @@ async function load() {
     const data = { assets: await response.json() };
     if (!Array.isArray(data.assets) || !data.assets.every(a => typeof a.symbol === 'string' && typeof a.name === 'string' && types.includes(a.type) && typeof a.tvSymbol === 'string' && /^[A-Z0-9_]+:[A-Za-z0-9.!_-]+$/.test(a.tvSymbol))) throw new Error('잘못된 시세 파일');
     snapshot = data;
+    mountQuotes(data.assets);
     $('notice').classList.remove('warning');
-    $('notice').textContent = '종목을 선택하면 TradingView 공식 위젯에서 가격과 차트를 확인합니다. 표의 가격은 수동 입력만 표시합니다. 위젯 로딩 시 TradingView와 통신합니다.';
+    $('notice').textContent = '상단 시세 목록에서 가격·등락률을 확인하세요. 아래 표는 개인 메모와 수동 기록용입니다. 위젯 로딩 시 TradingView와 통신하며 거래소별 지연·제공 제한이 있을 수 있습니다.';
     render(); if (selected) openDetail(selected);
   } catch (error) { $('notice').classList.add('warning'); $('notice').textContent = `데이터를 읽지 못했습니다. 기존 화면을 유지합니다. (${error.message})`; }
   finally { $('refresh').disabled = false; }
